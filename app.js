@@ -27,23 +27,23 @@ const getMeal = (mealInfo) => {
 
             col.innerHTML = item;
             row.appendChild(col);
-        }        
+        }
     });
 }
 
 // Display Meal
-const displayMeadDetails =(mealName)=>{
+const displayMeadDetails = (mealName) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
     fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-       return showIngredients(data.meals[0])
-    })   
-    
+        .then(res => res.json())
+        .then(data => {
+            return showIngredients(data.meals[0])
+        })
+
 }
 // Show Ingredients
-const showIngredients=(mealData)=>{
-    const IngredientsData =` <div class="col-md-5 mx-auto">
+const showIngredients = (mealData) => {
+    const IngredientsData = ` <div class="col-md-5 mx-auto">
                     <div class="card">
                         <img src="${mealData.strMealThumb}" class="img-fluid" alt="">                       
                         <div class="card-body">
@@ -97,9 +97,9 @@ const showIngredients=(mealData)=>{
     const row = document.getElementById("rowIngredients");
     row.innerHTML = IngredientsData;
     const li = document.querySelectorAll(".trackItem");
-    li.forEach(item=>{
-        if(item.innerText==""){
-            item.style.display="none";            
-        }        
-    })   
+    li.forEach(item => {
+        if (item.innerText == "") {
+            item.style.display = "none";
+        }
+    })
 }
